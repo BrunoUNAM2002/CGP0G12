@@ -65,8 +65,8 @@ int main() {
 		-0.5f,  0.5f, 0.0f,   1.0f,1.0f,0.0f, // top left 
 	};
 	unsigned int indices[] = {  // note that we start from 0!
-		3,2,1,// second Triangle
-		0,1,3,
+		2,3,0,// second Triangle
+		3,0,2,
 		
 	};
 
@@ -126,9 +126,9 @@ int main() {
 		// cuatro puntos glDrawArrays(GL_POINTS, 0, 4);
         //glDrawArrays(GL_LINES,0,4);
        /* glDrawArrays(GL_LINE_LOOP,0,4);*/
-	  glDrawElements(GL_TRIANGLES, 5, GL_UNSIGNED_INT, 0);
-       // glDrawArrays(GL_TRIANGLES,0,3);
-       //glDrawElements(GL_POINTS, 4,GL_UNSIGNED_INT,0);
+	   // glDrawElements(GL_QUADS, 4, GL_UNSIGNED_INT, 0);
+        //glDrawArrays(GL_TRIANGLES,4,0);
+       glDrawElements(GL_TRIANGLES, 3,GL_UNSIGNED_INT,0);
 
         
         
