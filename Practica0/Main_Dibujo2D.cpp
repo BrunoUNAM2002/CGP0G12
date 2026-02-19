@@ -129,6 +129,7 @@ int main() {
 	   // glDrawElements(GL_QUADS, 4, GL_UNSIGNED_INT, 0);
         //glDrawArrays(GL_TRIANGLES,4,0);
        glDrawElements(GL_TRIANGLES, 3,GL_UNSIGNED_INT,0);
+	  // glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 
         
         
