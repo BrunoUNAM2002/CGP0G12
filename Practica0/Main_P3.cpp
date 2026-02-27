@@ -197,11 +197,19 @@ int main() {
 
 	glBindVertexArray(0); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs)
 
+<<<<<<< HEAD
 
 	glm::mat4 projection = glm::mat4(1);
 
 
 	projection = glm::perspective(45.0f, (GLfloat)screenWidth / (GLfloat)screenHeight, 0.1f, 100.0f);//FOV, Radio de aspecto,znear,zfar
+=======
+	
+	glm::mat4 projection=glm::mat4(1);
+	
+
+	projection=glm::perspective(45.0f, (GLfloat)screenWidth / (GLfloat)screenHeight, 0.1f, 100.0f);//FOV, Radio de aspecto,znear,zfar
+>>>>>>> d4613d0f58d430072cdac13d2732fc0c5c38a153
 	//projection2=glm::perspective(45.0f, (GLfloat)screenWidth / (GLfloat)screenHeight, 0.1f, 100.0f);//FOV, Radio de aspecto,znear,zfar
 	//projection3=glm::perspective(45.0f, (GLfloat)screenWidth / (GLfloat)screenHeight, 0.1f, 100.0f);//FOV, Radio de aspecto,znear,zfar
 	//projection = glm::ortho(0.0f, (GLfloat)screenWidth, 0.0f, (GLfloat)screenHeight, 0.1f, 1000.0f);//Izq,Der,Fondo,Alto,Cercania,Lejania
@@ -221,6 +229,7 @@ int main() {
 		glm::mat4 model = glm::mat4(1);
 		glm::mat4 view = glm::mat4(1);
 
+<<<<<<< HEAD
 
 		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
 		model = glm::rotate(model, 0.5f, glm::vec3(1.0f, 0.0f, 0.0f)); // use to compare orthographic and perspective projection
@@ -229,6 +238,16 @@ int main() {
 
 
 
+=======
+	
+		 view = glm::translate(view, glm::vec3(0.0f,0.0f,-10.0f));
+		 model = glm::rotate( model, 0.5f, glm::vec3( 1.0f, 0.0f, 0.0f ) ); // use to compare orthographic and perspective projection
+		 model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		//view = glm::translate( view, glm::vec3( screenWidth / 2, screenHeight / 2,-700.0f ) ); // use with orthographic projection
+		
+		
+		
+>>>>>>> d4613d0f58d430072cdac13d2732fc0c5c38a153
 		GLint modelLoc = glGetUniformLocation(ourShader.Program, "model");
 		GLint viewLoc = glGetUniformLocation(ourShader.Program, "view");
 		GLint projecLoc = glGetUniformLocation(ourShader.Program, "projection");
@@ -238,6 +257,7 @@ int main() {
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
 
+<<<<<<< HEAD
 
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -286,6 +306,55 @@ int main() {
 		glBindVertexArray(0); // hasta al final
 
 
+=======
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glBindVertexArray(0); // hasta al final
+
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(5.0f, 3.0f, -10.0f));
+		model = glm::rotate(model, 0.5f, glm::vec3(7.0f, 7.0f, -10.0f)); // use to compare orthographic and perspective projection
+		model = glm::scale(model, glm::vec3(3.0f, 5.0f, 3.0f));
+		//view = glm::translate( view, glm::vec3( screenWidth / 2, screenHeight / 2,-700.0f ) ); // use with orthographic projection
+
+
+
+		modelLoc = glGetUniformLocation(ourShader.Program, "model");
+		//GLint viewLoc = glGetUniformLocation(ourShader.Program, "view");
+		/*GLint projecLoc = glGetUniformLocation(ourShader.Program, "projection");*/
+
+		glUniformMatrix4fv(projecLoc, 1, GL_FALSE, glm::value_ptr(projection));
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
+
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glBindVertexArray(0); // hasta al final
+		
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-5.0f, 3.0f, -5.0f));
+		model = glm::rotate(model, 0.5f, glm::vec3(7.0f, 7.0f, -45.0f)); // use to compare orthographic and perspective projection
+		model = glm::scale(model, glm::vec3(2.0f, 5.0f, 3.0f));
+		//view = glm::translate( view, glm::vec3( screenWidth / 2, screenHeight / 2,-700.0f ) ); // use with orthographic projection
+
+
+
+		modelLoc = glGetUniformLocation(ourShader.Program, "model");
+		//GLint viewLoc = glGetUniformLocation(ourShader.Program, "view");
+		/*GLint projecLoc = glGetUniformLocation(ourShader.Program, "projection");*/
+
+		glUniformMatrix4fv(projecLoc, 1, GL_FALSE, glm::value_ptr(projection));
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
+
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glBindVertexArray(0); // hasta al final
+		
+
+>>>>>>> d4613d0f58d430072cdac13d2732fc0c5c38a153
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
 
@@ -297,6 +366,12 @@ int main() {
 	glfwTerminate();
 	return EXIT_SUCCESS;
 
+<<<<<<< HEAD
 
 
 }
+=======
+  
+
+}
+>>>>>>> d4613d0f58d430072cdac13d2732fc0c5c38a153
