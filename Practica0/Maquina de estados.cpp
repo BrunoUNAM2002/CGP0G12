@@ -40,7 +40,6 @@ GLfloat lastX = WIDTH / 2.0;
 GLfloat lastY = HEIGHT / 2.0;
 bool keys[1024];
 bool firstMouse = true;
-float cont;
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
 bool active;
@@ -500,14 +499,13 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 		AnimBall = !AnimBall;
 		
 	}
-	
-	if (keys[GLFW_KEY_B])
+
+	if (keys[GLFW_KEY_M])
 	{
 		AnimDog = !AnimDog;
-	
 
 	}
-
+	
 }
 void Animation() {
 	if (AnimBall)
@@ -515,63 +513,41 @@ void Animation() {
 		rotBall += 0.4f;
 		//printf("%f", rotBall);
 	}
-
-	////Anim
-	//float rotBall = 0.0f;
-	//bool AnimBall = false;
-	//bool AnimDog = false;
-	//float rotDog = 0.0f;
-	//int dogAnim = 0;
-	//float FLegs = 0.0f;
-	//float RLegs = 0.0f;
-	//float head = 0.0f;
-	//float tail = 0.0f;
-	//glm::vec3 dogPos(0.0f, 0.0f, 0.0f);
-	//float dogRot = 0.0f;
-	//bool step = false;
-
-
-
+	
 	if (AnimDog)
 	{
-		step = true;
+		// mueve solo en Z
+		dogPos.z += 0.01f;
 
-		if (step = true)
+		// animación de patas/cabeza/cola
+		if (!step)
+		{
+			FLegs += 0.5f;
+			RLegs += 0.5f;
+			head += 0.2f;
+			tail += 0.5f;
 
-			dogPos += cont;
+			if (RLegs >= 15.0f)
+				step = true;
+		}
+		else
+		{
+			FLegs -= 0.5f;
+			RLegs -= 0.5f;
+			head -= 0.2f;
+			tail -= 0.5f;
 
-			if (cont >= 15) {
+			if (RLegs <= -15.0f)
+				step = false;
+		}
 
-				cont = -1;
-
-				FLegs += cont;
-				RLegs += cont;
-				head += cont;
-				tail += cont;
-			}
-			else if (cont <= -15) {
-
-				cont = 1;
-
-				FLegs += cont;
-				RLegs += cont;
-				head += cont;
-				tail += cont;
-
-			}
-			
-		
-
+		// para que no se vaya infinito
+		if (dogPos.z > 2.0f)
+			dogPos.z = -2.0f;
 	
-
-			
-
 	}
 
 }
-
-	
-	
 
 void MouseCallback(GLFWwindow *window, double xPos, double yPos)
 {
